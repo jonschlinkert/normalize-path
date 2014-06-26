@@ -1,0 +1,42 @@
+{
+  "name": "normalize-path",
+  "description": "Normalize file path slashes to be unix-like forward slashes, regardless of OS (since in reality Windows doesn't care about slash direction anyway). Also condenses repeat slashes to a single slash and removes and trailing slashes.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/normalize-path",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jonschlinkert/normalize-path.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/normalize-path/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jonschlinkert/normalize-path/blob/master/LICENSE-MIT"
+    }
+  ],
+  "keywords": [
+    "normalize",
+    "path",
+    "filepath",
+    "slash",
+    "slashes"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "devDependencies": {
+    "verb": "~0.2.6",
+    "chai": "~1.9.1",
+    "mocha": "*"
+  }
+}
