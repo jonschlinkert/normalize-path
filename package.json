@@ -1,7 +1,7 @@
 {
   "name": "normalize-path",
   "description": "Normalize file path slashes to be unix-like forward slashes, regardless of OS (since in reality Windows doesn't care about slash direction anyway). Also condenses repeat slashes to a single slash and removes and trailing slashes.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/jonschlinkert/normalize-path",
   "author": {
     "name": "Jon Schlinkert",
