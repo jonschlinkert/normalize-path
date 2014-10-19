@@ -1,7 +1,7 @@
 {
   "name": "normalize-path",
-  "description": "Normalize file path slashes to be unix-like forward slashes, regardless of OS (since in reality Windows doesn't care about slash direction anyway). Also condenses repeat slashes to a single slash and removes and trailing slashes.",
-  "version": "0.1.1",
+  "description": "Normalize file path slashes to be unix-like forward slashes. Also condenses repeat slashes to a single slash and removes and trailing slashes.",
+  "version": "0.2.0",
   "homepage": "https://github.com/jonschlinkert/normalize-path",
   "author": {
     "name": "Jon Schlinkert",
@@ -21,11 +21,15 @@
     }
   ],
   "keywords": [
+    "file",
+    "filepath",
+    "fp",
     "normalize",
     "path",
-    "filepath",
     "slash",
-    "slashes"
+    "slashes",
+    "trailing",
+    "unix"
   ],
   "main": "index.js",
   "engines": {
@@ -35,8 +39,9 @@
     "test": "mocha -R spec"
   },
   "devDependencies": {
-    "verb": "~0.2.6",
-    "chai": "~1.9.1",
-    "mocha": "*"
+    "benchmarked": "^0.1.1",
+    "mocha": "*",
+    "should": "^4.0.4",
+    "verb": "^0.2.15"
   }
 }
