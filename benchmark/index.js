@@ -4,7 +4,7 @@ var Suite = require('benchmarked');
 
 var suite = new Suite({
   expected: true,
-  fixtures: 'fixtures/*.js',
+  fixtures: 'fixtures/long.js',
   add: 'code/*.js',
   cwd: __dirname
 });

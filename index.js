@@ -7,10 +7,13 @@
 
 'use strict';
 
-module.exports = function(filepath) {
-  return filepath
+module.exports = function(filepath, stripTrailing) {
+  filepath = filepath
     .replace(/[\\\/]+/g, '/')
-    .replace(/^\.[\\\/]/g, '')
-    .replace(/\/$/g, '')
     .toLowerCase();
+
+  if (stripTrailing === false) {
+    return filepath;
+  }
+  return filepath.replace(/\/$/g, '');
 };
