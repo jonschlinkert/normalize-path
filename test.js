@@ -5,8 +5,17 @@
  * Licensed under the MIT License
  */
 
+require('mocha');
+var path = require('path');
+var argv = require('minimist')(process.argv.slice(2));
 var assert = require('assert');
 var normalize = require('./');
+
+if (argv.bench) {
+  var b = path.join(__dirname, 'benchmark/code', argv.bench);
+  console.log(b);
+  normalize = require(b);
+}
 
 describe('normalize:', function () {
   it('should normalize "E://foo//bar//baz"', function() {
@@ -61,7 +70,7 @@ describe('normalize:', function () {
     assert.equal(normalize('C:\\user\\docs\\somefile.ext:alternate_stream_name'), 'C:/user/docs/somefile.ext:alternate_stream_name');
   });
   it('should normalize "cwd"', function() {
-    assert.equal(normalize('./cwd'), './cwd');
+    assert.equal(normalize('./cwd'), 'cwd');
   });
   it('should normalize "grandparent"', function() {
     assert.equal(normalize('../../grandparent'), '../../grandparent');
@@ -71,7 +80,7 @@ describe('normalize:', function () {
     it('should not strip trailing slashes', function() {
       assert.equal(normalize('foo\\bar\\baz\\', false), 'foo/bar/baz/');
       assert.equal(normalize('foo/bar/baz/', false), 'foo/bar/baz/');
-      assert.equal(normalize('./foo/bar/baz/', false), './foo/bar/baz/');
+      assert.equal(normalize('./foo/bar/baz/', false), 'foo/bar/baz/');
     });
   });
 });
