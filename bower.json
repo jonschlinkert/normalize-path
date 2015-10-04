@@ -1,20 +1,11 @@
 {
   "name": "normalize-path",
   "description": "Normalize file path slashes to be unix-like forward slashes. Also condenses repeat slashes to a single slash and removes and trailing slashes.",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jonschlinkert/normalize-path.git"
-  },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/jonschlinkert/normalize-path/blob/master/LICENSE-MIT"
-  },
+  "repository": "jonschlinkert/normalize-path",
+  "license": "MIT",
   "homepage": "https://github.com/jonschlinkert/normalize-path",
   "authors": [
-    {
-      "name": "Jon Schlinkert",
-      "homepage": "https://github.com/jonschlinkert"
-    }
+    "Jon Schlinkert (https://github.com/jonschlinkert)"
   ],
   "main": [
     "index.js"
@@ -24,6 +15,7 @@
     "mocha": "*"
   },
   "keywords": [
+    "backslash",
     "file",
     "filepath",
     "fp",
@@ -32,6 +24,7 @@
     "slash",
     "slashes",
     "trailing",
-    "unix"
+    "unix",
+    "urix"
   ]
 }
