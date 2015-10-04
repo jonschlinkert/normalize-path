@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function normalize(str) {
   str = replace(str, '\\', '/');
   str = replace(str, '//', '/');
