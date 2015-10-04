@@ -5,13 +5,14 @@
  * Licensed under the MIT License
  */
 
-module.exports = function(fp, stripTrailing) {
-  fp = fp.replace(/[\\\/]+/g, '/');
-  if (stripTrailing === false) {
-    return fp;
+module.exports = function normalizePath(str, stripTrailing) {
+  if (typeof str !== 'string') {
+    throw new TypeError('expected a string');
   }
-
-  return fp.slice(-1) === '/'
-    ? fp.slice(0, fp.length -1)
-    : fp;
+  str = str.replace(/[\\\/]+/g, '/');
+  str = str.replace(/^\.\//, '');
+  if (stripTrailing !== false) {
+    str = str.replace(/\/$/, '');
+  }
+  return str;
 };
