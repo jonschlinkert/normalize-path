@@ -1,16 +1,19 @@
 {
-  "esnext": true,
+  "asi": false,
   "boss": true,
   "curly": false,
   "eqeqeq": true,
   "eqnull": true,
+  "esnext": true,
   "immed": true,
-  "latedef": true,
+  "latedef": false,
+  "laxbreak": true,
+  "laxcomma": false,
+  "mocha": true,
   "newcap": true,
   "noarg": true,
   "node": true,
   "sub": true,
   "undef": true,
-  "unused": true,
-  "mocha": true
+  "unused": true
 }
