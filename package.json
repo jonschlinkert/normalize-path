@@ -1,7 +1,7 @@
 {
   "name": "normalize-path",
   "description": "Normalize file path slashes to be unix-like forward slashes. Also condenses repeat slashes to a single slash and removes and trailing slashes.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://github.com/jonschlinkert/normalize-path",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/normalize-path",
@@ -27,11 +27,11 @@
   "keywords": [
     "backslash",
     "file",
-    "fs",
     "filepath",
     "fix",
     "forward",
     "fp",
+    "fs",
     "normalize",
     "path",
     "slash",
@@ -42,7 +42,6 @@
   ],
   "verb": {
     "related": {
-      "description": "Other useful libraries for working with paths in node.js:",
       "list": [
         "rewrite-ext",
         "contains-path",
@@ -53,7 +52,8 @@
         "is-relative",
         "parse-filepath",
         "unixify"
-      ]
+      ],
+      "description": "Other useful libraries for working with paths in node.js:"
     }
   }
 }
