@@ -69,9 +69,6 @@ describe('normalize:', function () {
   it('should normalize "C:\\user\\docs\\somefile.ext:alternate_stream_name"', function() {
     assert.equal(normalize('C:\\user\\docs\\somefile.ext:alternate_stream_name'), 'C:/user/docs/somefile.ext:alternate_stream_name');
   });
-  it('should normalize "cwd"', function() {
-    assert.equal(normalize('./cwd'), 'cwd');
-  });
   it('should normalize "grandparent"', function() {
     assert.equal(normalize('../../grandparent'), '../../grandparent');
   });
@@ -80,7 +77,7 @@ describe('normalize:', function () {
     it('should not strip trailing slashes', function() {
       assert.equal(normalize('foo\\bar\\baz\\', false), 'foo/bar/baz/');
       assert.equal(normalize('foo/bar/baz/', false), 'foo/bar/baz/');
-      assert.equal(normalize('./foo/bar/baz/', false), 'foo/bar/baz/');
+      assert.equal(normalize('./foo/bar/baz/', false), './foo/bar/baz/');
     });
   });
 });
