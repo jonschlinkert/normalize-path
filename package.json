@@ -4,6 +4,10 @@
   "version": "2.1.0",
   "homepage": "https://github.com/jonschlinkert/normalize-path",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "contributors": [
+    "Blaine Bublitz <blaine.bublitz@gmail.com> (https://twitter.com/BlaineBublitz)",
+    "Jon Schlinkert <jon.schlinkert@sellside.com> (http://twitter.com/jonschlinkert)"
+  ],
   "repository": "jonschlinkert/normalize-path",
   "bugs": {
     "url": "https://github.com/jonschlinkert/normalize-path/issues"
@@ -47,14 +51,14 @@
   "verb": {
     "related": {
       "list": [
-        "rewrite-ext",
         "contains-path",
         "ends-with",
-        "path-ends-with",
-        "path-segments",
         "is-absolute",
         "is-relative",
         "parse-filepath",
+        "path-ends-with",
+        "path-segments",
+        "rewrite-ext",
         "unixify"
       ],
       "description": "Other useful libraries for working with paths in node.js:"
