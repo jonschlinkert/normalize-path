@@ -1,7 +1,7 @@
 /*!
  * normalize-path <https://github.com/jonschlinkert/normalize-path>
  *
- * Copyright (c) 2014-2015, Jon Schlinkert.
+ * Copyright (c) 2014-2017, Jon Schlinkert.
  * Licensed under the MIT License
  */
 
@@ -17,76 +17,54 @@ if (argv.bench) {
   normalize = require(b);
 }
 
-describe('normalize:', function () {
-  it('should normalize "E://foo//bar//baz"', function() {
-    assert.equal(normalize('E://foo//bar//baz'), 'E:/foo/bar/baz');
-  });
-  it('should normalize "E://foo//bar//baz//"', function() {
-    assert.equal(normalize('E://foo//bar//baz//'), 'E:/foo/bar/baz');
-  });
-  it('should normalize "E://foo//bar//baz//////"', function() {
-    assert.equal(normalize('E://foo//bar//baz//////'), 'E:/foo/bar/baz');
-  });
-  it('should normalize "E:/foo/bar/baz/"', function() {
-    assert.equal(normalize('E:/foo/bar/baz/'), 'E:/foo/bar/baz');
-  });
-  it('should normalize "E:/foo/bar/baz///"', function() {
-    assert.equal(normalize('E:/foo/bar/baz///'), 'E:/foo/bar/baz');
-  });
-  it('should normalize "E://foo\\bar\\baz"', function() {
-    assert.equal(normalize('E://foo\\bar\\baz'), 'E:/foo/bar/baz');
-  });
-  it('should normalize "foo\\bar\\baz"', function() {
-    assert.equal(normalize('foo\\bar\\baz'), 'foo/bar/baz');
-  });
-  it('should normalize "foo\\bar\\baz\\"', function() {
-    assert.equal(normalize('foo\\bar\\baz\\'), 'foo/bar/baz');
-  });
-  it('should normalize "foo\\bar\\baz\\\\\\"', function() {
-    assert.equal(normalize('foo\\bar\\baz\\\\\\'), 'foo/bar/baz');
-  });
-  it('should normalize "E://foo/bar\\baz"', function() {
-    assert.equal(normalize('E://foo/bar\\baz'), 'E:/foo/bar/baz');
-  });
-  it('should normalize "E:\\\\foo/bar\\baz"', function() {
-    assert.equal(normalize('E:\\\\foo/bar\\baz'), 'E:/foo/bar/baz');
-  });
-  it('should normalize "foo/bar\\baz"', function() {
-    assert.equal(normalize('//foo/bar\\baz'), '/foo/bar/baz');
-  });
-  it('should normalize "foo\\bar\\baz"', function() {
-    assert.equal(normalize('//foo\\bar\\baz'), '/foo/bar/baz');
-  });
-  it('should normalize "C:\\user\\docs\\Letter.txt"', function() {
-    assert.equal(normalize('C:\\user\\docs\\Letter.txt'), 'C:/user/docs/Letter.txt');
-  });
-  it('should normalize "user/docs/Letter.txt"', function() {
-    assert.equal(normalize('/user/docs/Letter.txt'), '/user/docs/Letter.txt');
-  });
-  it('should normalize "C:Letter.txt"', function() {
-    assert.equal(normalize('C:Letter.txt'), 'C:Letter.txt');
-  });
-  it('should normalize "Server01\\user\\docs\\Letter.txt"', function() {
-    assert.equal(normalize('\\Server01\\user\\docs\\Letter.txt'), '/Server01/user/docs/Letter.txt');
-  });
-  it('should normalize "UNC\\Server01\\user\\docs\\Letter.txt"', function() {
-    assert.equal(normalize('\\?\\UNC\\Server01\\user\\docs\\Letter.txt'), '/?/UNC/Server01/user/docs/Letter.txt');
-  });
-  it('should normalize "C:\\user\\docs\\Letter.txt"', function() {
-    assert.equal(normalize('\\?\\C:\\user\\docs\\Letter.txt'), '/?/C:/user/docs/Letter.txt');
-  });
-  it('should normalize "C:\\user\\docs\\somefile.ext:alternate_stream_name"', function() {
-    assert.equal(normalize('C:\\user\\docs\\somefile.ext:alternate_stream_name'), 'C:/user/docs/somefile.ext:alternate_stream_name');
-  });
-  it('should normalize "grandparent"', function() {
-    assert.equal(normalize('../../grandparent'), '../../grandparent');
+describe('normalize-path', function () {
+  describe('strip trailing slashes', function() {
+    var units = [
+      ['../../grandparent', '../../grandparent'],
+      ['..\\..\\grandparent', '../../grandparent'],
+      ['..\\\\..\\\\grandparent', '../../grandparent'],
+      ['//foo/bar\\baz', '/foo/bar/baz'],
+      ['//foo\\bar\\baz', '/foo/bar/baz'],
+      ['/user/docs/Letter.txt', '/user/docs/Letter.txt'],
+      ['\\?\\C:\\user\\docs\\Letter.txt', '/?/C:/user/docs/Letter.txt'],
+      ['\\?\\UNC\\Server01\\user\\docs\\Letter.txt', '/?/UNC/Server01/user/docs/Letter.txt'],
+      ['\\Server01\\user\\docs\\Letter.txt', '/Server01/user/docs/Letter.txt'],
+      ['C:\\user\\docs\\Letter.txt', 'C:/user/docs/Letter.txt'],
+      ['C:\\user\\docs\\somefile.ext:alternate_stream_name', 'C:/user/docs/somefile.ext:alternate_stream_name'],
+      ['C:Letter.txt', 'C:Letter.txt'],
+      ['E://foo//bar//baz', 'E:/foo/bar/baz'],
+      ['E://foo//bar//baz//', 'E:/foo/bar/baz'],
+      ['E://foo//bar//baz//////', 'E:/foo/bar/baz'],
+      ['E://foo/bar\\baz', 'E:/foo/bar/baz'],
+      ['E://foo\\bar\\baz', 'E:/foo/bar/baz'],
+      ['E:/foo/bar/baz/', 'E:/foo/bar/baz'],
+      ['E:/foo/bar/baz///', 'E:/foo/bar/baz'],
+      ['E:\\\\foo/bar\\baz', 'E:/foo/bar/baz'],
+      ['foo\\bar\\baz', 'foo/bar/baz'],
+      ['foo\\bar\\baz\\', 'foo/bar/baz'],
+      ['foo\\bar\\baz\\\\\\', 'foo/bar/baz'],
+    ];
+
+    units.forEach(function(unit) {
+      it('should normalize ' + unit[0], function() {
+        assert.equal(normalize(unit[0]), unit[1]);
+      });
+    });
   });
 
-  describe('when `false` is passed as the last argument:', function() {
-    it('should not strip trailing slashes', function() {
-      assert.equal(normalize('foo\\bar\\baz\\', false), 'foo/bar/baz/');
-      assert.equal(normalize('foo/bar/baz/', false), 'foo/bar/baz/');
-      assert.equal(normalize('./foo/bar/baz/', false), './foo/bar/baz/');
+  describe('keep trailing slashes', function() {
+    var units = [
+      ['foo\\bar\\baz\\', 'foo/bar/baz/'],
+      ['foo\\\\bar\\\\baz\\\\', 'foo/bar/baz/'],
+      ['foo//bar//baz//', 'foo/bar/baz/'],
+      ['foo/bar/baz/', 'foo/bar/baz/'],
+      ['./foo/bar/baz/', './foo/bar/baz/']
+    ];
+
+    units.forEach(function(unit) {
+      it('should normalize ' + unit[0], function() {
+        assert.equal(normalize(unit[0], false), unit[1]);
+      });
     });
   });
 });
