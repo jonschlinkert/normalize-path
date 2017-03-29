@@ -19,6 +19,9 @@
   "scripts": {
     "test": "mocha"
   },
+  "dependencies": {
+    "remove-trailing-separator": "^1.0.1"
+  },
   "devDependencies": {
     "benchmarked": "^0.1.1",
     "minimist": "^1.2.0",
