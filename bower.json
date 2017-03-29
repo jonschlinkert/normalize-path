@@ -1,6 +1,6 @@
 {
   "name": "normalize-path",
-  "description": "Normalize file path slashes to be unix-like forward slashes. Also condenses repeat slashes to a single slash and removes and trailing slashes.",
+  "description": "Normalize file path slashes to be unix-like forward slashes. Also condenses repeat slashes to a single slash and removes and trailing slashes unless disabled.",
   "repository": "jonschlinkert/normalize-path",
   "license": "MIT",
   "homepage": "https://github.com/jonschlinkert/normalize-path",
@@ -12,13 +12,18 @@
   ],
   "devDependencies": {
     "benchmarked": "^0.1.1",
+    "gulp-format-md": "^0.1.11",
+    "minimist": "^1.2.0",
     "mocha": "*"
   },
   "keywords": [
     "backslash",
     "file",
     "filepath",
+    "fix",
+    "forward",
     "fp",
+    "fs",
     "normalize",
     "path",
     "slash",
@@ -26,5 +31,25 @@
     "trailing",
     "unix",
     "urix"
+  ],
+  "version": "2.1.0",
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/normalize-path/issues"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "remove-trailing-separator": "^1.0.1"
+  },
+  "ignore": [
+    "actual",
+    "bower_components",
+    "fixtures",
+    "node_modules",
+    "temp",
+    "test",
+    "test.js",
+    "tmp"
   ]
 }
