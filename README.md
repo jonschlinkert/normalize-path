@@ -22,7 +22,7 @@ normalize('./foo/bar/baz/');
 //=> './foo/bar/baz'
 ```
 
-Pass `false` as the last argument to **not** strip trailing slashes:
+Pass `false` as the last argument to **keep** trailing slashes:
 
 ```js
 normalize('./foo/bar/baz/', false);
@@ -49,6 +49,13 @@ normalize('foo\\bar\\baz\\', false);
 ### Contributing
 
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
+
+### Contributors
+
+| **Commits** | **Contributor** | 
+| --- | --- |
+| 31 | [jonschlinkert](https://github.com/jonschlinkert) |
+| 1 | [phated](https://github.com/phated) |
 
 ### Building docs
 
