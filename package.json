@@ -1,6 +1,6 @@
 {
   "name": "normalize-path",
-  "description": "Normalize file path slashes to be unix-like forward slashes. Also condenses repeat slashes to a single slash and removes and trailing slashes.",
+  "description": "Normalize file path slashes to be unix-like forward slashes. Also condenses repeat slashes to a single slash and removes and trailing slashes unless disabled.",
   "version": "2.0.1",
   "homepage": "https://github.com/jonschlinkert/normalize-path",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "benchmarked": "^0.1.1",
+    "gulp-format-md": "^0.1.11",
     "minimist": "^1.2.0",
     "mocha": "*"
   },
@@ -57,6 +58,17 @@
         "unixify"
       ],
       "description": "Other useful libraries for working with paths in node.js:"
+    },
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
     }
   }
 }
