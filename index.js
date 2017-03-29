@@ -5,13 +5,15 @@
  * Licensed under the MIT License
  */
 
+var removeTrailingSeparator = require('remove-trailing-separator');
+
 module.exports = function normalizePath(str, stripTrailing) {
   if (typeof str !== 'string') {
     throw new TypeError('expected a string');
   }
   str = str.replace(/[\\\/]+/g, '/');
   if (stripTrailing !== false) {
-    str = str.replace(/\/$/, '');
+    str = removeTrailingSeparator(str);
   }
   return str;
 };

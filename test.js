@@ -24,8 +24,14 @@ describe('normalize:', function () {
   it('should normalize "E://foo//bar//baz//"', function() {
     assert.equal(normalize('E://foo//bar//baz//'), 'E:/foo/bar/baz');
   });
+  it('should normalize "E://foo//bar//baz//////"', function() {
+    assert.equal(normalize('E://foo//bar//baz//////'), 'E:/foo/bar/baz');
+  });
   it('should normalize "E:/foo/bar/baz/"', function() {
     assert.equal(normalize('E:/foo/bar/baz/'), 'E:/foo/bar/baz');
+  });
+  it('should normalize "E:/foo/bar/baz///"', function() {
+    assert.equal(normalize('E:/foo/bar/baz///'), 'E:/foo/bar/baz');
   });
   it('should normalize "E://foo\\bar\\baz"', function() {
     assert.equal(normalize('E://foo\\bar\\baz'), 'E:/foo/bar/baz');
@@ -35,6 +41,9 @@ describe('normalize:', function () {
   });
   it('should normalize "foo\\bar\\baz\\"', function() {
     assert.equal(normalize('foo\\bar\\baz\\'), 'foo/bar/baz');
+  });
+  it('should normalize "foo\\bar\\baz\\\\\\"', function() {
+    assert.equal(normalize('foo\\bar\\baz\\\\\\'), 'foo/bar/baz');
   });
   it('should normalize "E://foo/bar\\baz"', function() {
     assert.equal(normalize('E://foo/bar\\baz'), 'E:/foo/bar/baz');
