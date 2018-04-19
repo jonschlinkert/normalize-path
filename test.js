@@ -1,3 +1,5 @@
+'use strict';
+
 /*!
  * normalize-path <https://github.com/jonschlinkert/normalize-path>
  *
@@ -17,7 +19,7 @@ if (argv.bench) {
   normalize = require(b);
 }
 
-describe('normalize-path', function () {
+describe('normalize-path', function() {
   describe('strip trailing slashes', function() {
     var units = [
       ['../../grandparent', '../../grandparent'],
