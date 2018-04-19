@@ -1,7 +1,7 @@
 {
   "name": "normalize-path",
   "description": "Normalize slashes in a file path to be posix/unix-like forward slashes. Also condenses repeat slashes to a single slash and removes and trailing slashes, unless disabled.",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "homepage": "https://github.com/jonschlinkert/normalize-path",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "contributors": [
