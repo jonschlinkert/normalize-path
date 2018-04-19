@@ -4,4 +4,4 @@
  * /user/docs/letter.txt'
  */
 
-module.exports = ['\\user\\docs\\Letter.txt'];
+module.exports = ['c:\\user\\docs\\Letter.txt'];

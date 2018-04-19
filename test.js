@@ -20,16 +20,30 @@ if (argv.bench) {
 }
 
 describe('normalize-path', function() {
+  describe('single slash', function() {
+    it('should always return a single forward slash', function() {
+      assert.equal(normalize('/'), '/');
+      assert.equal(normalize('/', true), '/');
+
+      assert.equal(normalize('\\'), '/');
+      assert.equal(normalize('\\', true), '/');
+    });
+  });
+
   describe('strip trailing slashes', function() {
     var units = [
-      ['../../grandparent', '../../grandparent'],
-      ['..\\..\\grandparent', '../../grandparent'],
-      ['..\\\\..\\\\grandparent', '../../grandparent'],
+      ['../../foo/bar', '../../foo/bar'],
+      ['..\\..\\foo/bar', '../../foo/bar'],
+      ['..\\\\..\\\\foo/bar', '../../foo/bar'],
       ['//foo/bar\\baz', '/foo/bar/baz'],
       ['//foo\\bar\\baz', '/foo/bar/baz'],
       ['/user/docs/Letter.txt', '/user/docs/Letter.txt'],
       ['\\?\\C:\\user\\docs\\Letter.txt', '/?/C:/user/docs/Letter.txt'],
       ['\\?\\UNC\\Server01\\user\\docs\\Letter.txt', '/?/UNC/Server01/user/docs/Letter.txt'],
+      ['\\\\.\\CdRomX', '//./CdRomX'],
+      ['\\\\.\\PhysicalDiskX', '//./PhysicalDiskX'],
+      ['\\\\?\\C:\\user\\docs\\Letter.txt', '//?/C:/user/docs/Letter.txt'],
+      ['\\\\?\\UNC\\Server01\\user\\docs\\Letter.txt', '//?/UNC/Server01/user/docs/Letter.txt'],
       ['\\Server01\\user\\docs\\Letter.txt', '/Server01/user/docs/Letter.txt'],
       ['C:\\user\\docs\\Letter.txt', 'C:/user/docs/Letter.txt'],
       ['C:\\user\\docs\\somefile.ext:alternate_stream_name', 'C:/user/docs/somefile.ext:alternate_stream_name'],
@@ -56,6 +70,7 @@ describe('normalize-path', function() {
 
   describe('keep trailing slashes', function() {
     var units = [
+      ['\\', '/'],
       ['foo\\bar\\baz\\', 'foo/bar/baz/'],
       ['foo\\\\bar\\\\baz\\\\', 'foo/bar/baz/'],
       ['foo//bar//baz//', 'foo/bar/baz/'],

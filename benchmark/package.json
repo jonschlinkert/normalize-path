@@ -1,0 +1,10 @@
+{
+  "name": "benchmarks",
+  "private": true,
+  "dependencies": {
+    "benchmarked": "^2.0.0"
+  },
+  "devDependencies": {
+    "remove-trailing-separator": "^1.1.0"
+  }
+}

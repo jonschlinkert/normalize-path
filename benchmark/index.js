@@ -1,12 +1,12 @@
 'use strict';
 
-var Suite = require('benchmarked');
+const path = require('path');
+const suite = require('benchmarked');
+const argv = process.argv.slice(2);
+const code = argv[0] || '{current,v2}';
 
-var suite = new Suite({
-  result: true,
-  fixtures: 'fixtures/{unix,win}.js',
-  add: 'code/{current,while}.js',
-  cwd: __dirname
-});
-
-suite.run();
+suite.run({ code: `code/${code}.js`, fixtures: 'fixtures/*.js' })
+  .then(function(stats) {
+    console.log(suite.render(stats));
+  })
+  .catch(console.error);
