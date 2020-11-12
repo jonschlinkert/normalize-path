@@ -11,7 +11,7 @@ require('mocha');
 var path = require('path');
 var argv = require('minimist')(process.argv.slice(2));
 var assert = require('assert');
-var normalize = require('./');
+var normalize = require('../');
 
 if (argv.bench) {
   var b = path.join(__dirname, 'benchmark/code', argv.bench);
