@@ -1,3 +1,4 @@
+
 /*!
  * normalize-path <https://github.com/jonschlinkert/normalize-path>
  *
@@ -5,7 +6,7 @@
  * Released under the MIT License.
  */
 
-module.exports = function(path, stripTrailing) {
+export default function(path, stripTrailing) {
   if (typeof path !== 'string') {
     throw new TypeError('expected path to be a string');
   }
@@ -32,4 +33,4 @@ module.exports = function(path, stripTrailing) {
     segs.pop();
   }
   return prefix + segs.join('/');
-};
+}

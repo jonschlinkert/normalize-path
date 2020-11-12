@@ -14,15 +14,15 @@
   },
   "license": "MIT",
   "files": [
-    "index.mjs",
-    "index.js"
+    "index.js",
+    "index.cjs"
   ],
-  "main": "index.js",
+  "main": "index.cjs",
   "exports": {
-    "import": "./index.mjs",
-    "require": "./index.js"
+    "import": "./index.js",
+    "require": "./index.cjs"
   },
-  "type": "commonjs",
+  "type": "module",
   "typing": "index.d.ts",
   "engines": {
     "node": ">=0.10.0"
@@ -32,9 +32,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "gulp-format-md": "^1.0.0",
-    "minimist": "^1.2.0",
-    "mocha": "^3.5.3"
+    "gulp-format-md": "^2.0.0",
+    "minimist": "^1.2.5",
+    "mocha": "^8.2.1"
   },
   "keywords": [
     "absolute",
