@@ -45,7 +45,7 @@ console.log(normalize('.//foo//bar///////baz/'));
 By default trailing slashes are removed. Pass `false` as the last argument to disable this behavior and _**keep** trailing slashes_:
 
 ```js
-console.log(normalize('foo\\bar\\baz\\', false)); //=> 'foo/bar/baz/'
+console.log(normalize('foo\\bar\\baz\\')); //=> 'foo/bar/baz/'
 console.log(normalize('./foo/bar/baz/', false)); //=> './foo/bar/baz/'
 ```
 
